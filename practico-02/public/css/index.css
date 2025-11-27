@@ -1,0 +1,353 @@
+/* index.css - Versión Minimalista con Azul Oscuro */
+:root {
+    --primary-color: #1e40af;      /* Azul más oscuro */
+    --primary-dark: #1e3a8a;       /* Azul aún más oscuro para hover */
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --border-color: #e5e7eb;
+    --bg-white: #ffffff;
+    --bg-gray: #f8fafc;
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-gray);
+    min-height: 100vh;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.contenedor-inicio {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Hero Section Minimalista */
+.hero-section {
+    background: var(--bg-white);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.hero-titulo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.hero-descripcion {
+    font-size: 1.125rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-botones {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Botones Minimalistas */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background: var(--primary-color);  /* Azul oscuro */
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);   /* Azul más oscuro */
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-color);       /* Azul oscuro */
+    border-color: var(--primary-color); /* Azul oscuro */
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);   /* Azul oscuro */
+    color: white;
+}
+
+/* Secciones */
+.seccion-titulo {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+/* Estadísticas Minimalistas */
+.estadisticas-section {
+    margin-bottom: 3rem;
+}
+
+.estadisticas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.estadistica-card {
+    background: var(--bg-white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.estadistica-icono {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.8;
+}
+
+.estadistica-card h3 {
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.estadistica-valor {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);  /* Azul oscuro */
+}
+
+/* Destacados Section Minimalista */
+.destacados-section {
+    margin-bottom: 3rem;
+}
+
+.destacados-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.destacado-card {
+    background: var(--bg-white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.destacado-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.destacado-badge {
+    background: var(--primary-color);  /* Azul oscuro */
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.destacado-content {
+    padding: 0.25rem 0;
+}
+
+.destacado-titulo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.destacado-dato {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dato-label {
+    color: var(--text-light);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.dato-valor {
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Tags minimalistas */
+.poderes-preview, .aliados-preview, .enemigos-preview {
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.poder-tag, .aliado-tag, .enemigo-tag {
+    background: var(--primary-color);  /* Azul oscuro */
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.poder-tag-more, .aliado-tag-more, .enemigo-tag-more {
+    background: var(--text-light);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+.sin-aliados, .sin-enemigos {
+    color: var(--text-light);
+    font-style: italic;
+    font-size: 0.8rem;
+}
+
+/* Botón de destacado minimalista */
+.btn-destacado {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background: transparent;
+    color: var(--primary-color);       /* Azul oscuro */
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: all 0.2s ease;
+    border: 1px solid var(--primary-color); /* Azul oscuro */
+    font-size: 0.9rem;
+}
+
+.btn-destacado:hover {
+    background: var(--primary-color);   /* Azul oscuro */
+    color: white;
+}
+
+/* Sección sin héroes minimalista */
+.no-heroes-section {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--bg-white);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.no-heroes-content h2 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.no-heroes-content p {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-titulo {
+        font-size: 2rem;
+    }
+    
+    .seccion-titulo {
+        font-size: 1.75rem;
+    }
+    
+    .hero-botones {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 200px;
+    }
+    
+    .destacados-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .estadisticas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .contenedor-inicio {
+        padding: 1.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenedor-inicio {
+        padding: 1rem 0.5rem;
+    }
+    
+    .hero-section {
+        padding: 2rem 1rem;
+    }
+    
+    .destacado-card {
+        padding: 1.25rem;
+    }
+    
+    .destacado-titulo {
+        font-size: 1.125rem;
+    }
+    
+    .estadisticas-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-titulo {
+        font-size: 1.75rem;
+    }
+    
+    .seccion-titulo {
+        font-size: 1.5rem;
+    }
+}

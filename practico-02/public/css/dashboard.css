@@ -1,0 +1,363 @@
+/* Reset y base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    min-height: 100vh;
+    color: #2d3748;
+    line-height: 1.6;
+}
+
+/* Contenedor principal */
+.contenedor {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Header */
+.header {
+    background: #ffffff;
+    padding: 2.5rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    border: 1px solid #e2e8f0;
+}
+
+.header h1 {
+    font-size: 2.25rem;
+    font-weight: 500;
+    color: #1a202c;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.boton-agregarSuperheroe {
+    display: inline-block;
+    background: #3182ce;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin-bottom: 2rem;
+    border: 1px solid #3182ce;
+}
+
+.boton-agregarSuperheroe:hover {
+    background: #2b6cb0;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(49, 130, 206, 0.3);
+}
+
+/* Estadísticas del header */
+.header-estadisticas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.header-estadistica {
+    background: #f7fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+}
+
+.header-estadistica h3 {
+    font-size: 0.9rem;
+    color: #4a5568;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.header-texto-estadistica {
+    font-size: 2.25rem;
+    font-weight: 400;
+    color: #1a202c;
+}
+
+/* Lista de héroes */
+.lista-heroes {
+    margin-top: 2rem;
+}
+
+/* Grid de héroes */
+.heroes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+/* Tarjeta de héroe */
+.heroe-carta {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.heroe-carta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #4a5568;
+}
+
+.heroe-carta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Nombre del héroe */
+.heroe-nombre {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+/* Información del héroe */
+.heroe-info {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.heroe-info strong {
+    color: #4a5568;
+    font-weight: 600;
+    min-width: 120px;
+    font-size: 0.9rem;
+}
+
+.heroe-arrays {
+    margin-bottom: 1rem;
+}
+
+.heroe-arrays h4 {
+    color: #4a5568;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Tags para arrays */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.span-array {
+    background: #4a5568;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid #4a5568;
+}
+
+.span-array-sin-datos {
+    background: #f1f5f9;
+    color: #718096;
+    padding: 0.25rem 0.75rem;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    font-style: italic;
+    border: 1px solid #e2e8f0;
+}
+
+/* Acciones del héroe */
+.heroes-accion {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.heroe-accion {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+#boton-editar {
+    background: #3182ce;
+    color: white;
+    border: 1px solid #3182ce;
+}
+
+#boton-editar:hover {
+    background: #2b6cb0;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(49, 130, 206, 0.3);
+}
+
+#boton-eliminar {
+    background: #e53e3e;
+    color: white;
+    border: 1px solid #e53e3e;
+}
+
+#boton-eliminar:hover {
+    background: #c53030;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(229, 62, 62, 0.3);
+}
+
+/* Estado sin héroes */
+.no-heroes {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+}
+
+.no-heroes p {
+    font-size: 1.25rem;
+    color: #718096;
+    margin-bottom: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contenedor {
+        padding: 1rem;
+    }
+    
+    .header {
+        padding: 1.5rem;
+    }
+    
+    .header h1 {
+        font-size: 1.75rem;
+    }
+    
+    .heroes-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .heroe-carta {
+        padding: 1.5rem;
+    }
+    
+    .header-estadisticas {
+        grid-template-columns: 1fr;
+    }
+    
+    .heroe-info {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .heroe-info strong {
+        min-width: auto;
+    }
+    
+    .heroes-accion {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .heroe-nombre {
+        font-size: 1.25rem;
+    }
+    
+    .header-texto-estadistica {
+        font-size: 1.75rem;
+    }
+}
+
+/* Animaciones */
+.heroe-carta {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efectos de carga */
+.heroe-carta:nth-child(odd) {
+    animation-delay: 0.1s;
+}
+
+.heroe-carta:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+/* Estados hover mejorados */
+.heroe-carta:hover .heroe-nombre {
+    color: #3182ce;
+}
+
+/* Scroll suave */
+.lista-heroes {
+    scroll-behavior: smooth;
+}
+
+/* Mejoras de accesibilidad */
+.heroe-accion:focus,
+.boton-agregarSuperheroe:focus {
+    outline: 2px solid #4a5568;
+    outline-offset: 2px;
+}
+
+/* Estados vacíos mejorados */
+.no-heroes {
+    background: #ffffff;
+}
+
+.no-heroes p {
+    font-size: 1.25rem;
+    color: #4a5568;
+    font-weight: 400;
+}

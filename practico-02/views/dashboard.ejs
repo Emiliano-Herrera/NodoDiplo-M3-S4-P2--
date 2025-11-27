@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <div class="contenedor">
+        <div class="header">
+            <h1>Dashboard de Superheroes</h1>
+            <!-- <a href="heroes/nuevo" class="boton-agregarSuperheroe">Agregar Superheroe</a> -->
+            <div class="header-estadisticas">
+                <div class="header-estadistica">
+                    <h3>Total Superheroes</h3>
+                    <!-- Mostramos el total de superheroes -->
+                    <div class="header-texto-estadistica"><%= superheroes.length %></div>
+                </div>
+                <div class="header-estadistica">
+                    <h3>Total Superheroes mayores a 30</h3>
+                    <!-- Hacemos un filtro y cuenta los superheroes mayores a 30 -->
+                    <div class="header-texto-estadistica"><%= superheroes.filter(heroe => heroe.edad > 30).length %></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="lista-heroes">
+            <!-- Verificamos que si hay superheroes y mostramos, 
+            en caso de que no mostramos un mensaje de que no hay heroes cargados -->
+            <% if(superheroes.length === 0){ %>
+                <div class="no-heroes">
+                    <p>No hay heroes cargados</p>
+                </div>
+            <% } else { %>
+                <div class="heroes-grid">
+                    <!-- Loop ejs itera sobre cada superheroe en el array (basicamente que lo repite por cada heroe) -->
+                    <% superheroes.forEach(heroe => { %>
+                        <div class="heroe-carta">
+                            <!-- Mostramos el nombre del hero -->
+                            <h2 class="heroe-nombre"><%= heroe.nombreSuperHeroe %></h2>
+
+                            <div class="heroe-info">
+                                <!-- Mostramos el nombre real -->
+                                <strong>Nombre Real:</strong> <%= heroe.nombreReal %>
+                            </div>
+                            
+                            <div class="heroe-info">
+                                <!-- Mostramos su edad -->
+                                <strong>Edad:</strong> <%= heroe.edad %> años
+                            </div>
+                            
+                            <div class="heroe-info">
+                                <!-- Mostramos su planeta de origen, en caso de que no tenga mostramos un mensaje de que no se cargó -->
+                                <strong>Planeta de origen:</strong> <%= heroe.planetaOrigen? heroe.planetaOrigen : 'Sin planeta de origen cargado' %>
+                            </div>
+                            
+                            <div class="heroe-info">
+                                <!-- Mostramos su debilidad, en caso de que no tenga mostramos un mensaje de que no se cargó  -->
+                                <strong>Debilidad:</strong> <%= heroe.debilidad ? heroe.debilidad : 'Sin debilidad cargada' %>
+                            </div>
+                            
+                            <div class="heroe-arrays">
+                                <!-- Mostramos el array de poderes -->
+                                <h4>Poderes:</h4>
+                                <div class="tags">
+                                    <% heroe.poderes.forEach(poder => { %>
+                                        <span class="span-array"><%= poder %></span>
+                                    <% }); %>
+                                </div>
+                            </div>
+                            
+                            <div class="heroe-arrays">
+                                <!-- Mostramos el array de aliados,
+                                comprueba de que si existen aliados y luego los itera, 
+                                tambien cuenta con un mensaje en caso de que no hayan aliados -->
+                                <h4>Aliados:</h4>
+                                <div class="tags">
+                                    <% if(heroe.aliados && heroe.aliados.length > 0) { %>
+                                        <% heroe.aliados.forEach(aliado => { %>
+                                            <span class="span-array"><%= aliado %></span>
+                                        <% }); %>
+                                    <% } else { %>
+                                        <span class="span-array-sin-datos">Sin aliados cargados</span>
+                                    <% } %>
+                                </div>
+                            </div>
+                            
+                            <div class="heroe-arrays">
+                                <!-- Mostramos el array de enemigos,
+                                comprueba de que si existen enemifos y luego los itera, 
+                                tambien cuenta con un mensaje en caso de que no hayan enemigos -->
+                                <h4>Enemigos:</h4>
+                                <div class="tags">
+                                    <% if(heroe.enemigos && heroe.enemigos.length > 0) { %>
+                                        <% heroe.enemigos.forEach(enemigo => { %>
+                                            <span class="span-array"><%= enemigo %></span>
+                                        <% }); %>
+                                    <% } else { %>
+                                        <span class="span-array-sin-datos">Sin enemigos cargados</span>
+                                    <% } %>
+                                </div>
+                            </div>
+                            
+                            <div class="heroe-info">
+                                <!-- Mostramos el creador y un mensaje en caso de que no tenga -->
+                                <strong>Creador:</strong> <%= heroe.creador ? heroe.creador : 'Sin creador cargado' %>
+                            </div>
+                            
+                            <div class="heroes-accion">
+                                <!-- tenemos los botones de editar y eliminar -->
+                                <!-- Para el editar basicamente le damos la url y el id del heroe y nos envia a la vista de editar -->
+                                <a href="heroes/editar/<%= heroe._id %>" class="heroe-accion" id="boton-editar">Editar</a>
+                                <!-- Para el eliminar un heroe llama a una función de confirmación de sweet alert 
+                                y en js lo elimina por id -->
+                                <button class="heroe-accion" id="boton-eliminar" onclick="confirmarEliminacion('<%= heroe._id %>', '<%= heroe.nombreSuperHeroe %>')">Eliminar</button>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            <% } %>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="/js/dashboard.js"></script> -->
+</body>
+</html>

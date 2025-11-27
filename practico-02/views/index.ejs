@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <div class="contenedor-inicio">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-titulo">Bienvenido al sitio web de Superheroes</h1>
+                <p class="hero-descripcion">Estadísticas y rankings de superhéroes</p>
+            </div>
+        </section>
+
+        <!-- Estadísticas Rápidas -->
+        <section class="estadisticas-section">
+            <h2 class="seccion-titulo">Resumen General</h2>
+            <div class="estadisticas-grid">
+                <div class="estadistica-card">
+                    <div class="estadistica-icono">🦸</div>
+                    <h3>Total Superhéroes</h3>
+                    <div class="estadistica-valor"><%= superheroes.length %></div>
+                </div>
+                <div class="estadistica-card">
+                    <div class="estadistica-icono">🎂</div>
+                    <h3>Mayores de 30 años</h3>
+                    <div class="estadistica-valor">
+                        <%= superheroes.filter(hero => hero.edad > 30).length %>
+                    </div>
+                </div>
+                <div class="estadistica-card">
+                    <div class="estadistica-icono">⚡</div>
+                    <h3>Poderes Totales</h3>
+                    <div class="estadistica-valor">
+                        <%= superheroes.reduce((total, hero) => total + (hero.poderes?.length || 0), 0) %>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Superhéroes Destacados -->
+        <section class="destacados-section">
+            <h2 class="seccion-titulo">Superhéroes Destacados</h2>
+            
+            <div class="destacados-grid">
+                <!-- Superhéroe Más Longevo -->
+                <% 
+                const heroeMasLongevo = superheroes.length > 0 ? 
+                    superheroes.reduce((max, hero) => hero.edad > max.edad ? hero : max) : 
+                    null;
+                %>
+                <% if (heroeMasLongevo) { %>
+                    <div class="destacado-card destacado-oro">
+                        <div class="destacado-badge">👑 Más Longevo</div>
+                        <div class="destacado-content">
+                            <h3 class="destacado-titulo"><%= heroeMasLongevo.nombreSuperHeroe %></h3>
+                            <div class="destacado-dato">
+                                <span class="dato-label">Edad:</span>
+                                <span class="dato-valor"><%= heroeMasLongevo.edad %> años</span>
+                            </div>
+                            <div class="destacado-dato">
+                                <span class="dato-label">Nombre Real:</span>
+                                <span class="dato-valor"><%= heroeMasLongevo.nombreReal %></span>
+                            </div>
+                            <div class="destacado-dato">
+                                <span class="dato-label">Poderes:</span>
+                                <span class="dato-valor"><%= heroeMasLongevo.poderes?.length || 0 %></span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                <% } %>
+
+                <!-- Superhéroe con Más Poderes -->
+                <% 
+                const heroeMasPoderes = superheroes.length > 0 ? 
+                    superheroes.reduce((max, hero) => 
+                        (hero.poderes?.length || 0) > (max.poderes?.length || 0) ? hero : max
+                    ) : 
+                    null;
+                %>
+                <% if (heroeMasPoderes) { %>
+                    <div class="destacado-card destacado-plata">
+                        <div class="destacado-badge">⚡ Más Poderes</div>
+                        <div class="destacado-content">
+                            <h3 class="destacado-titulo"><%= heroeMasPoderes.nombreSuperHeroe %></h3>
+                            <div class="destacado-dato">
+                                <span class="dato-label">Total Poderes:</span>
+                                <span class="dato-valor"><%= heroeMasPoderes.poderes?.length || 0 %></span>
+                            </div>
+                            <div class="destacado-dato">
+                                <span class="dato-label">Edad:</span>
+                                <span class="dato-valor"><%= heroeMasPoderes.edad %> años</span>
+                            </div>
+                            <div class="poderes-preview">
+                                <% if (heroeMasPoderes.poderes && heroeMasPoderes.poderes.length > 0) { %>
+                                    <% heroeMasPoderes.poderes.slice(0, 3).forEach(poder => { %>
+                                        <span class="poder-tag"><%= poder %></span>
+                                    <% }); %>
+                                    <% if (heroeMasPoderes.poderes.length > 3) { %>
+                                        <span class="poder-tag-more">+<%= heroeMasPoderes.poderes.length - 3 %> más</span>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                            
+                        </div>
+                    </div>
+                <% } %>
+
+                <!-- Superhéroe con Menos Poderes -->
+                <% 
+                const heroeMenosPoderes = superheroes.length > 0 ? 
+                    superheroes.reduce((min, hero) => 
+                        (hero.poderes?.length || 0) < (min.poderes?.length || 0) ? hero : min
+                    ) : 
+                    null;
+                %>
+                <% if (heroeMenosPoderes && superheroes.length > 1) { %>
+                    <div class="destacado-card destacado-bronce">
+                        <div class="destacado-badge">🔰 Menos Poderes</div>
+                        <div class="destacado-content">
+                            <h3 class="destacado-titulo"><%= heroeMenosPoderes.nombreSuperHeroe %></h3>
+                            <div class="destacado-dato">
+                                <span class="dato-label">Total Poderes:</span>
+                                <span class="dato-valor"><%= heroeMenosPoderes.poderes?.length || 0 %></span>
+                            </div>
+                            <div class="destacado-dato">
+                                <span class="dato-label">Edad:</span>
+                                <span class="dato-valor"><%= heroeMenosPoderes.edad %> años</span>
+                            </div>
+                            <div class="destacado-dato">
+                                <span class="dato-label">Debilidad:</span>
+                                <span class="dato-valor"><%= heroeMenosPoderes.debilidad || 'No especificada' %></span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                <% } %>
+
+                <!-- Superhéroe con Más Aliados -->
+                <% 
+                const heroeMasAliados = superheroes.length > 0 ? 
+                    superheroes.reduce((max, hero) => 
+                        (hero.aliados?.length || 0) > (max.aliados?.length || 0) ? hero : max
+                    ) : 
+                    null;
+                %>
+                <% if (heroeMasAliados) { %>
+                    <div class="destacado-card destacado-azul">
+                        <div class="destacado-badge">🤝 Más Aliados</div>
+                        <div class="destacado-content">
+                            <h3 class="destacado-titulo"><%= heroeMasAliados.nombreSuperHeroe %></h3>
+                            <div class="destacado-dato">
+                                <span class="dato-label">Total Aliados:</span>
+                                <span class="dato-valor"><%= heroeMasAliados.aliados?.length || 0 %></span>
+                            </div>
+                            <div class="destacado-dato">
+                                <span class="dato-label">Edad:</span>
+                                <span class="dato-valor"><%= heroeMasAliados.edad %> años</span>
+                            </div>
+                            <div class="aliados-preview">
+                                <% if (heroeMasAliados.aliados && heroeMasAliados.aliados.length > 0) { %>
+                                    <% heroeMasAliados.aliados.slice(0, 2).forEach(aliado => { %>
+                                        <span class="aliado-tag"><%= aliado %></span>
+                                    <% }); %>
+                                    <% if (heroeMasAliados.aliados.length > 2) { %>
+                                        <span class="aliado-tag-more">+<%= heroeMasAliados.aliados.length - 2 %> más</span>
+                                    <% } %>
+                                <% } else { %>
+                                    <span class="sin-aliados">Sin aliados registrados</span>
+                                <% } %>
+                            </div>
+                            
+                        </div>
+                    </div>
+                <% } %>
+
+                <!-- Superhéroe con Más Enemigos -->
+                <% 
+                const heroeMasEnemigos = superheroes.length > 0 ? 
+                    superheroes.reduce((max, hero) => 
+                        (hero.enemigos?.length || 0) > (max.enemigos?.length || 0) ? hero : max
+                    ) : 
+                    null;
+                %>
+                <% if (heroeMasEnemigos) { %>
+                    <div class="destacado-card destacado-rojo">
+                        <div class="destacado-badge">👊 Más Enemigos</div>
+                        <div class="destacado-content">
+                            <h3 class="destacado-titulo"><%= heroeMasEnemigos.nombreSuperHeroe %></h3>
+                            <div class="destacado-dato">
+                                <span class="dato-label">Total Enemigos:</span>
+                                <span class="dato-valor"><%= heroeMasEnemigos.enemigos?.length || 0 %></span>
+                            </div>
+                            <div class="destacado-dato">
+                                <span class="dato-label">Edad:</span>
+                                <span class="dato-valor"><%= heroeMasEnemigos.edad %> años</span>
+                            </div>
+                            <div class="enemigos-preview">
+                                <% if (heroeMasEnemigos.enemigos && heroeMasEnemigos.enemigos.length > 0) { %>
+                                    <% heroeMasEnemigos.enemigos.slice(0, 2).forEach(enemigo => { %>
+                                        <span class="enemigo-tag"><%= enemigo %></span>
+                                    <% }); %>
+                                    <% if (heroeMasEnemigos.enemigos.length > 2) { %>
+                                        <span class="enemigo-tag-more">+<%= heroeMasEnemigos.enemigos.length - 2 %> más</span>
+                                    <% } %>
+                                <% } else { %>
+                                    <span class="sin-enemigos">Sin enemigos registrados</span>
+                                <% } %>
+                            </div>
+                            
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </section>
+
+        <!-- Mensaje si no hay superhéroes -->
+        <% if (superheroes.length === 0) { %>
+            <section class="no-heroes-section">
+                <div class="no-heroes-content">
+                    <h2>¡Aún no hay superhéroes registrados!</h2>
+                    <p>Comienza agregando el primer superhéroe a tu colección</p>
+                    <a href="/heroes/nuevo" class="btn btn-primary">Agregar Primer Superhéroe</a>
+                </div>
+            </section>
+        <% } %>
+    </div>
+
+    <script>
+        // Efectos de hover para las cartas
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartas = document.querySelectorAll('.destacado-card');
+            
+            cartas.forEach(carta => {
+                carta.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                
+                carta.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
